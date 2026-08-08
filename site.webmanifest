@@ -1,0 +1,10 @@
+{
+  "name": "Amit Singh — Senior Backend Engineer",
+  "short_name": "Amit Singh",
+  "description": "Senior backend, AWS platform, and applied-AI engineering portfolio.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f6f7f9",
+  "theme_color": "#0d2a5e",
+  "icons": [{"src": "favicon.svg", "sizes": "any", "type": "image/svg+xml"}]
+}
