@@ -1,26 +1,32 @@
-# amit-singh.github.io — Build Roadmap
+# amit-singh.github.io — Roadmap
 
-Built in weekend-sized phases. Each phase ends in a tagged release, a short demo, and (where it fits) a blog post. **Do not start until AgentOS Phase 1 is shipped.**
+Live at <https://amitsinghom.github.io/>. Built in small, visible increments; every
+change lands through a pull request and deploys via GitHub Pages from `main`.
 
-> Rule: ship small, iterate visibly. Earn scope by finishing.
+> Rule: every claim on the site must be traceable to a public repository or a
+> verifiable artifact. Test counts and performance numbers are re-verified by
+> running the suites before they are published.
 
-## Phase 0 — Single-page site  ·  ~1 wknd
-**Goal:** Hero, project cards, links — ship it plain and fast
+## Phase 0 — Single-page site  ·  ✅ done (2026-08)
+Hero, selected-work cards, leadership and experience sections, print-ready résumé
+page, canonical/Open Graph metadata, `ProfilePage` + `Person` JSON-LD, sitemap,
+robots, manifest, social card. No JavaScript, fonts, analytics, or trackers.
 
-- [ ] (break into tasks when you start this phase)
+## Phase 1 — Evidence links  ·  ✅ done (2026-09)
+Project cards link directly to the evidence they cite: the webhook platform's
+public benchmarks page and SKIP LOCKED deep-dive, and the CloudScale source
+repository once it was made public.
 
-## Phase 1 — Blog index  ·  ~half wknd
-**Goal:** List + link the architecture writeups
+## Phase 2 — Polish  ·  ✅ done (2026-08 → 2026-09)
+Responsive layout, focus-visible and reduced-motion handling, skip link,
+sub-35 KB total page weight, `rel="noreferrer"` on all external links.
 
-- [ ] (break into tasks when you start this phase)
+## Phase 3 — Writeups index  ·  ⏳ not started
+A short index page listing architecture writeups as they are published in the
+project repositories (benchmarks, delivery semantics, resilience notes).
 
-## Phase 2 — Polish  ·  ~1 wknd
-**Goal:** Diagrams, responsive, fast load
-
-- [ ] (break into tasks when you start this phase)
-
-## Definition of done (every phase)
-1. Tests pass, CI green.
-2. README status updated.
-3. Tagged release.
-4. Blog post drafted if it maps to one.
+## Definition of done (every change)
+1. Every number on the site re-verified against the public repo it cites.
+2. HTML parses clean; all outbound links return 200.
+3. `sitemap.xml` `lastmod` updated when indexed content changes.
+4. Landed via pull request, verified live after Pages deploys.

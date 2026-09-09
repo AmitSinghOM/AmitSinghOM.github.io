@@ -2,9 +2,9 @@
 
 A fast, dependency-free portfolio focused on senior backend, distributed-systems, AWS platform, and applied-AI engineering.
 
-**Intended public URL:** <https://amitsinghom.github.io/>
+**Live at:** <https://amitsinghom.github.io/> — deployed by GitHub Pages from the `main` branch of `AmitSinghOM/AmitSinghOM.github.io`.
 
-> The GitHub user-site repository must be named `AmitSinghOM.github.io` for this URL to work.
+Every project claim on the site (test counts, throughput numbers, release mechanics) is re-verified against the public repository it cites before it is published. See [ROADMAP.md](./ROADMAP.md) for what has shipped and what is next.
 
 ## Site structure
 
@@ -27,14 +27,10 @@ Then open <http://localhost:8000>.
 
 ## SEO setup
 
-The site includes canonical metadata, Open Graph/Twitter cards, `ProfilePage` and `Person` JSON-LD, index directives, a sitemap, semantic HTML, and descriptive content. After deployment:
-
-1. Add `https://amitsinghom.github.io/` to Google Search Console.
-2. Submit `https://amitsinghom.github.io/sitemap.xml`.
-3. Link the portfolio from GitHub, LinkedIn, and public project READMEs.
+The site includes canonical metadata, Open Graph/Twitter cards, `ProfilePage` and `Person` JSON-LD, index directives, a sitemap, semantic HTML, and descriptive content. Google Search Console ownership is verified via the meta tag in `index.html`; `sitemap.xml` is referenced from `robots.txt`. Update `lastmod` in the sitemap whenever indexed content changes.
 
 ## Deploy
 
-Create the public repository `AmitSinghOM/AmitSinghOM.github.io`, push this directory to its `main` branch, and configure GitHub Pages to deploy from the repository root. No build workflow is required.
+Changes land on `main` through pull requests; GitHub Pages redeploys the repository root automatically. No build workflow is required.
 
 The site uses no JavaScript, third-party fonts, analytics, trackers, or runtime dependencies.
