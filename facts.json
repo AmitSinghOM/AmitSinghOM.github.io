@@ -1,6 +1,6 @@
 {
   "$comment": "Single source of truth for every number the portfolio quotes. Re-measure before editing: `pytest --collect-only -q` in each repo at the commit named here. scripts/check_facts.py fails CI when index.html, resume.html or a GitHub repo description disagrees with this file.",
-  "measured_on": "2026-09-19",
+  "measured_on": "2026-09-20",
   "projects": {
     "webhook-platform": {
       "repo": "AmitSinghOM/fastapi-microservices-platform",
@@ -8,16 +8,25 @@
       "commit": "8789684",
       "tests": 220,
       "tests_note": "188 app/tests + 32 sdk/python/tests, both collected with pytest --collect-only",
-      "must_mention": ["PostgreSQL", "Standard Webhooks"]
+      "must_mention": [
+        "PostgreSQL",
+        "Standard Webhooks"
+      ]
     },
     "agentos": {
       "repo": "AmitSinghOM/AgentOS",
-      "version": "v0.8.0",
-      "version_tag": "v0.8.0-watchable",
-      "commit": "0748cfa",
-      "tests": 301,
-      "must_mention": ["event log", "SIGKILL"],
-      "must_not_mention": ["never double-executes", "exactly-once effects"]
+      "version": "v0.9.0",
+      "version_tag": "v0.9.0-pilot",
+      "commit": "82b5a26",
+      "tests": 494,
+      "must_mention": [
+        "event log",
+        "SIGKILL"
+      ],
+      "must_not_mention": [
+        "never double-executes",
+        "exactly-once effects"
+      ]
     },
     "cqa-analyzer": {
       "repo": "AmitSinghOM/code-quality-analyzer",
@@ -25,30 +34,44 @@
       "commit": "df8eb08",
       "tests": 803,
       "tests_note": "pytest --collect-only at df8eb08: 803 collected (802 passed, 1 skipped)",
-      "must_mention": ["95 rules", "eight languages", "security"]
+      "must_mention": [
+        "95 rules",
+        "eight languages",
+        "security"
+      ]
     },
     "cloudscale": {
       "repo": "AmitSinghOM/cloudscale-backend",
       "version": "v0.6.0",
       "commit": "f849857",
       "tests": 316,
-      "must_mention": ["1,394 rps", "SQLite"]
+      "must_mention": [
+        "1,394 rps",
+        "SQLite"
+      ]
     },
     "wallet-transfer": {
       "repo": "AmitSinghOM/wallet-transfer-service",
       "commit": "ff517f2",
       "tests": 36,
-      "must_mention": ["ON CONFLICT"]
+      "must_mention": [
+        "ON CONFLICT"
+      ]
     },
     "agent-skills": {
       "repo": "AmitSinghOM/agent-skills",
       "commit": "0da9f0a",
       "tests": 41,
-      "must_mention": ["Four"]
+      "must_mention": [
+        "Four"
+      ]
     }
   },
   "site": {
-    "files": ["index.html", "resume.html"],
+    "files": [
+      "index.html",
+      "resume.html"
+    ],
     "tests_total_fact": "tests-total"
   }
 }
