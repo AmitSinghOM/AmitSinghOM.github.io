@@ -21,12 +21,20 @@ repository once it was made public.
 Responsive layout, focus-visible and reduced-motion handling, skip link,
 sub-35 KB total page weight, `rel="noreferrer"` on all external links.
 
+## Phase 2b — Cut and verify  ·  ✅ done (2026-09-19)
+Three featured projects and four in brief, each card on one template: the
+problem, two design decisions, one measured result, one stated limit, evidence
+links. Absolute claims bounded (AgentOS: duplicate *committed* completions are
+prevented; external side effects still rely on downstream idempotency). Every
+quoted number moved into `facts.json`, enforced against the site and the GitHub
+repository descriptions by `scripts/check_facts.py` in CI.
+
 ## Phase 3 — Writeups index  ·  ⏳ not started
 A short index page listing architecture writeups as they are published in the
 project repositories (benchmarks, delivery semantics, resilience notes).
 
 ## Definition of done (every change)
-1. Every number on the site re-verified against the public repo it cites.
+1. Every number on the site re-verified against the public repo it cites and recorded in `facts.json`; `python3 scripts/check_facts.py --remote` passes.
 2. HTML parses clean; all outbound links return 200.
 3. `sitemap.xml` `lastmod` updated when indexed content changes.
 4. Landed via pull request, verified live after Pages deploys.
