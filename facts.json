@@ -21,10 +21,11 @@
     },
     "cqa-analyzer": {
       "repo": "AmitSinghOM/code-quality-analyzer",
-      "version": "v3.1.0",
-      "commit": "66cd6d2",
-      "tests": 712,
-      "must_mention": ["68 rules", "eight languages"]
+      "version": "v3.2.1",
+      "commit": "df8eb08",
+      "tests": 803,
+      "tests_note": "pytest --collect-only at df8eb08: 803 collected (802 passed, 1 skipped)",
+      "must_mention": ["95 rules", "eight languages", "security"]
     },
     "cloudscale": {
       "repo": "AmitSinghOM/cloudscale-backend",
