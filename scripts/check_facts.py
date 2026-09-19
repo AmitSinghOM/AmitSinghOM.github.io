@@ -2,7 +2,8 @@
 """Fail when a number on the site disagrees with facts.json.
 
 Local checks (always):
-  * every project in facts.json appears in each site file as an element carrying
+  * every project in facts.json appears in each site file (or only in the files
+    its optional "pages" list names) as an element carrying
     data-project="<key>", and that element's visible text contains
     "<tests> tests", the version string (if any), every must_mention phrase,
     and none of the must_not_mention phrases;
@@ -66,6 +67,10 @@ def check_local(facts: dict) -> list[str]:
         path = ROOT / rel
         page = path.read_text(encoding="utf-8")
         for key, spec in projects.items():
+            if rel not in spec.get("pages", facts["site"]["files"]):
+                if element_text(page, key, rel) is not None:
+                    problems.append(f"{rel} [{key}]: present but facts.json scopes it to {spec['pages']}")
+                continue
             text = element_text(page, key, rel)
             if text is None:
                 problems.append(f"{rel}: no element with data-project=\"{key}\"")

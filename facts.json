@@ -53,6 +53,7 @@
     },
     "wallet-transfer": {
       "repo": "AmitSinghOM/wallet-transfer-service",
+      "pages": ["index.html"],
       "commit": "ff517f2",
       "tests": 36,
       "must_mention": [
@@ -61,6 +62,7 @@
     },
     "agent-skills": {
       "repo": "AmitSinghOM/agent-skills",
+      "pages": ["index.html"],
       "commit": "0da9f0a",
       "tests": 41,
       "must_mention": [
