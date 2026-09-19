@@ -15,10 +15,10 @@
     },
     "agentos": {
       "repo": "AmitSinghOM/AgentOS",
-      "version": "v0.9.0",
-      "version_tag": "v0.9.0-pilot",
-      "commit": "82b5a26",
-      "tests": 494,
+      "version": "v0.10.0",
+      "version_tag": "v0.10.0-ui",
+      "commit": "4ec81a9",
+      "tests": 509,
       "must_mention": [
         "event log",
         "SIGKILL"
