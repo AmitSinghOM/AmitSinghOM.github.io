@@ -4,11 +4,19 @@ A fast, dependency-free portfolio focused on senior backend, distributed-systems
 
 **Live at:** <https://amitsinghom.github.io/> — deployed by GitHub Pages from the `main` branch of `AmitSinghOM/AmitSinghOM.github.io`.
 
-Every project claim on the site (test counts, throughput numbers, release mechanics) is re-verified against the public repository it cites before it is published. See [ROADMAP.md](./ROADMAP.md) for what has shipped and what is next.
+Every number on the site comes from one file, [`facts.json`](./facts.json), measured against the public repository it cites (`pytest --collect-only` at the commit named there). `scripts/check_facts.py` fails CI when `index.html`, `resume.html`, or a GitHub repository description disagrees with that file, so a stale count cannot survive a merge:
+
+```bash
+python3 scripts/check_facts.py            # site vs facts.json
+python3 scripts/check_facts.py --remote   # plus GitHub descriptions and tags
+```
+
+To change a number: re-measure, edit `facts.json`, then the site, then the repository description. See [ROADMAP.md](./ROADMAP.md) for what has shipped and what is next.
 
 ## Site structure
 
 - `index.html` — responsive portfolio and structured profile data
+- `facts.json` and `scripts/check_facts.py` — source of truth for every quoted number, and the CI check that enforces it
 - `styles.css` — visual system, responsive behavior, and accessibility states
 - `resume.html` — print-ready résumé (`noindex` to prevent search competition)
 - `robots.txt` and `sitemap.xml` — crawler discovery
@@ -31,6 +39,6 @@ The site includes canonical metadata, Open Graph/Twitter cards, `ProfilePage` an
 
 ## Deploy
 
-Changes land on `main` through pull requests; GitHub Pages redeploys the repository root automatically. No build workflow is required.
+Changes land on `main` through pull requests gated by the `facts` workflow; GitHub Pages redeploys the repository root automatically. No build step is required.
 
 The site uses no JavaScript, third-party fonts, analytics, trackers, or runtime dependencies.
