@@ -42,9 +42,10 @@
     },
     "cloudscale": {
       "repo": "AmitSinghOM/cloudscale-backend",
-      "version": "v0.6.0",
-      "commit": "f849857",
-      "tests": 316,
+      "version": "v0.9.0",
+      "commit": "2579d27",
+      "tests": 498,
+      "tests_note": "pytest --collect-only at 2579d27 from requirements-dev.lock: 498 collected. 1,394 rps is the v0.5.0 release gate run with every control active (evidence/4bf63dd, ROADMAP); README's Phase-4 figure is a different run",
       "must_mention": [
         "1,394 rps",
         "SQLite"
