@@ -15,10 +15,11 @@
     },
     "agentos": {
       "repo": "AmitSinghOM/AgentOS",
-      "version": "v0.10.0",
-      "version_tag": "v0.10.0-ui",
-      "commit": "4ec81a9",
-      "tests": 509,
+      "version": "v0.14.0",
+      "version_tag": "v0.14.0",
+      "commit": "6ba5220",
+      "tests": 545,
+      "tests_note": "pytest --collect-only -q at 6ba5220 (v0.14.0 tag): 545 collected incl. providers and chaos; plus 54 UI tests (vitest) not counted here",
       "must_mention": [
         "event log",
         "SIGKILL"
