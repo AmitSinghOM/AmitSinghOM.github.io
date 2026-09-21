@@ -1,6 +1,6 @@
 {
   "$comment": "Single source of truth for every number the portfolio quotes. Re-measure before editing: `pytest --collect-only -q` in each repo at the commit named here. scripts/check_facts.py fails CI when index.html, resume.html or a GitHub repo description disagrees with this file.",
-  "measured_on": "2026-09-20",
+  "measured_on": "2026-09-21",
   "projects": {
     "webhook-platform": {
       "repo": "AmitSinghOM/fastapi-microservices-platform",
@@ -30,10 +30,10 @@
     },
     "cqa-analyzer": {
       "repo": "AmitSinghOM/code-quality-analyzer",
-      "version": "v3.2.1",
-      "commit": "df8eb08",
-      "tests": 803,
-      "tests_note": "pytest --collect-only at df8eb08: 803 collected (802 passed, 1 skipped)",
+      "version": "v3.3.0",
+      "commit": "26be993",
+      "tests": 857,
+      "tests_note": "pytest --collect-only at 26be993 (v3.3.0 merge commit), fresh --depth 1 clone + venv from .[dev]: 857 collected",
       "must_mention": [
         "95 rules",
         "eight languages",
