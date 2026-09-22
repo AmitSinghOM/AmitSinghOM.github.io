@@ -1,6 +1,6 @@
 {
   "$comment": "Single source of truth for every number the portfolio quotes. Re-measure before editing: `pytest --collect-only -q` in each repo at the commit named here. scripts/check_facts.py fails CI when index.html, resume.html or a GitHub repo description disagrees with this file.",
-  "measured_on": "2026-09-21",
+  "measured_on": "2026-09-22",
   "projects": {
     "webhook-platform": {
       "repo": "AmitSinghOM/fastapi-microservices-platform",
@@ -15,11 +15,11 @@
     },
     "agentos": {
       "repo": "AmitSinghOM/AgentOS",
-      "version": "v0.14.0",
-      "version_tag": "v0.14.0",
-      "commit": "6ba5220",
-      "tests": 545,
-      "tests_note": "pytest --collect-only -q at 6ba5220 (v0.14.0 tag): 545 collected incl. providers and chaos; plus 54 UI tests (vitest) not counted here",
+      "version": "v0.16.0",
+      "version_tag": "v0.16.0",
+      "commit": "d239104",
+      "tests": 558,
+      "tests_note": "pytest --collect-only -q at d239104 (v0.16.0 tag) with the four provider distributions installed: tests/ 487 + providers 71 = 558 collected incl. chaos; plus 99 UI tests (vitest) not counted here",
       "must_mention": [
         "event log",
         "SIGKILL"
