@@ -28,7 +28,7 @@
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="nav"><a class="brand" href="index.html" aria-label="Amit Singh, home">Amit Singh<span>.</span></a><nav aria-label="Primary"><a href="index.html#work">Work</a><a href="evidence.html">Evidence</a><a href="resume.html">Résumé</a><a href="mailto:amitdsingh710@gmail.com">Contact</a></nav></header>
+<header class="nav"><a class="brand" href="index.html" aria-label="Amit Singh, home">Amit Singh<span>.</span></a><nav aria-label="Primary"><a href="index.html#work">Work</a><a href="index.html#leadership">Leadership</a><a href="evidence.html">Evidence</a><a href="resume.html">Résumé</a><a href="mailto:amitdsingh710@gmail.com">Contact</a></nav></header>
 <main id="main">
 <section class="page-intro"><p class="eyebrow">Evidence, with its boundaries</p><h1>What the tests establish.<br>And what they don’t.</h1><p>Dated observations from public CI logs and benchmark documentation, reviewed on 1 October 2026. This is a snapshot, not a claim that every number tracks the latest release.</p><p class="evidence-note">Passing tests support specific claims. They do not establish production capacity, external adoption, or long-term availability. Suites and matrix jobs can overlap, so there is no portfolio-wide test total.</p><nav class="evidence-nav" aria-label="Projects"><a href="#cloudscale">CloudScale Backend</a><a href="#webhook-platform">FastAPI Microservices Platform</a><a href="#cqa-analyzer">Code Quality Analyzer</a><a href="#agentos">AgentOS</a><a href="#wallet-transfer">Wallet Transfer Service</a><a href="#agent-skills">Agent Skills</a></nav></section>
 <article class="evidence-entry" id="cloudscale" data-project="cloudscale">
@@ -76,16 +76,22 @@
 </article>
 <article class="evidence-entry" id="wallet-transfer" data-project="wallet-transfer">
 <h2>Wallet Transfer Service</h2>
-<p class="evidence-meta">Public source snapshot: <a href="https://github.com/AmitSinghOM/wallet-transfer-service/tree/ff517f25d81cf4f044d6cdd071314028f6c8e283"><code>ff517f25d81c</code></a></p>
+<p class="evidence-meta">Public source snapshot: <a href="https://github.com/AmitSinghOM/wallet-transfer-service/tree/360c87c9731bd07e8fdd0a1af38afcb0d4d9b558"><code>360c87c9731b</code></a></p>
 <p><strong>The decision:</strong> Use transaction-bound idempotency keys and deterministic wallet lock ordering for a focused transfer service.</p>
-<p>At the reviewed source snapshot, no hosted CI workflow or versioned release was present. The repository includes local tests and a design writeup; no hosted test count or production-use claim is made here.</p>
+<ul>
+<li><strong>Suite against PostgreSQL 16, Python 3.12:</strong> <span data-fact="wallet-transfer-1">36 passed</span>. <a href="https://github.com/AmitSinghOM/wallet-transfer-service/actions/runs/37610929342/job/112757726818">Inspect evidence · run 2026-10-07</a>.</li>
+</ul>
+<p>The suite runs against a real PostgreSQL service, including concurrent first-transfer and idempotent-retry scenarios. It establishes the invariants under test, not throughput or production use.</p>
 <p class="boundary-note">Transaction-design case study, not a production payments system.</p>
 </article>
 <article class="evidence-entry" id="agent-skills" data-project="agent-skills">
 <h2>Agent Skills</h2>
 <p class="evidence-meta">Public source snapshot: <a href="https://github.com/AmitSinghOM/agent-skills/tree/0da9f0af0855c3e84200fc4f9c1cd5d4a8eaf889"><code>0da9f0af0855</code></a></p>
 <p><strong>The decision:</strong> Package four tool-backed coding-agent workflows, including architecture snapshots and changed-line quality gates.</p>
-<p>This entry describes the pinned public snapshot, not unpublished local changes. Script and contract tests establish tool behaviour; model-level validation needs a separate, scored evaluation. No marketplace adoption is claimed.</p>
+<ul>
+<li><strong>Validator and unit tests, Python 3.12:</strong> <span data-fact="agent-skills-1">Ran 41 tests, OK</span>. <a href="https://github.com/AmitSinghOM/agent-skills/actions/runs/34749014647/job/103702023796">Inspect evidence · run 2026-09-13</a>.</li>
+</ul>
+<p>This entry describes the pinned public snapshot, not unpublished local changes. The selected job is one Python version of a four-version matrix. Script and contract tests establish tool behaviour; model-level validation needs a separate, scored evaluation. No marketplace adoption is claimed.</p>
 <p class="boundary-note">Script tests do not establish model-behaviour quality.</p>
 </article>
 </main>

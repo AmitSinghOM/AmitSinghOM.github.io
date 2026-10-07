@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "reviewed_on": "2026-10-01",
+  "reviewed_on": "2026-10-07",
   "measurement_policy": "Dated observations from pinned public CI logs or benchmark documentation. Suites and matrix jobs can overlap: do not sum them. Remote checks validate public source commits and CI job identity/conclusion, not numeric log contents. No claim of external adoption or production certification.",
   "site": {
     "files": [
@@ -133,13 +133,24 @@
     "wallet-transfer": {
       "title": "Wallet Transfer Service",
       "repo": "AmitSinghOM/wallet-transfer-service",
-      "commit": "ff517f25d81cf4f044d6cdd071314028f6c8e283",
+      "commit": "360c87c9731bd07e8fdd0a1af38afcb0d4d9b558",
       "pages": [
         "index.html",
         "evidence.html"
       ],
       "boundary": "Transaction-design case study, not a production payments system.",
-      "observations": []
+      "observations": [
+        {
+          "id": "wallet-transfer-1",
+          "label": "Suite against PostgreSQL 16, Python 3.12",
+          "value": "36 passed",
+          "source_url": "https://github.com/AmitSinghOM/wallet-transfer-service/actions/runs/37610929342/job/112757726818",
+          "run_id": 37610929342,
+          "job_id": 112757726818,
+          "job_name": "test (py3.12, PostgreSQL 16)",
+          "run_date": "2026-10-07"
+        }
+      ]
     },
     "agent-skills": {
       "title": "Agent Skills",
@@ -150,7 +161,18 @@
         "evidence.html"
       ],
       "boundary": "Script tests do not establish model-behaviour quality.",
-      "observations": []
+      "observations": [
+        {
+          "id": "agent-skills-1",
+          "label": "Validator and unit tests, Python 3.12",
+          "value": "Ran 41 tests, OK",
+          "source_url": "https://github.com/AmitSinghOM/agent-skills/actions/runs/34749014647/job/103702023796",
+          "run_id": 34749014647,
+          "job_id": 103702023796,
+          "job_name": "validate-and-test (3.12)",
+          "run_date": "2026-09-13"
+        }
+      ]
     }
   }
 }

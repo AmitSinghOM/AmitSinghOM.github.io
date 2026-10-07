@@ -60,8 +60,11 @@ code{font-size:.9em;overflow-wrap:anywhere}
 .more-grid h3{font-size:1.4rem}
 .more-grid p,.more-grid a{font-size:.88rem}
 .more-grid p{color:var(--muted)}
-.judgment{display:grid;grid-template-columns:1.1fr 1fr;gap:56px}
-.judgment p:last-child{color:var(--muted)}
+.leadership-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+.leadership-grid h3{font-size:1.4rem;margin:0 0 10px}
+.leadership-grid p:last-child{font-size:.92rem;color:var(--muted)}
+.leadership-grid .eyebrow{margin-bottom:10px}
+
 .career-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px}
 .career-grid h3{font-size:1.4rem}
 .career-grid p{font-size:.92rem;color:var(--muted)}
@@ -94,7 +97,7 @@ footer small{grid-column:1/-1;font-size:.73rem;color:var(--muted);padding-top:20
 .button{font-size:.83rem}
 .text-link{padding:8px 0}
 .section{padding:40px 0}
-.production-grid,.project,.judgment,.career-grid{grid-template-columns:1fr;gap:20px}
+.production-grid,.project,.leadership-grid,.career-grid{grid-template-columns:1fr;gap:20px}
 .project{padding:30px 0}
 .project-heading h3{font-size:1.8rem;margin-bottom:0}
 .project-proof div{grid-template-columns:65px 1fr;gap:10px}
