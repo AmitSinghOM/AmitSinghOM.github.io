@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Engineering evidence | Amit Singh</title>
+  <meta name="description" content="Pinned test results, benchmark scope, and limitations for Amit Singh’s public engineering projects.">
+  <meta name="author" content="Amit Singh">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="google-site-verification" content="meYjrEQto1s7tn9jI4LYgLtyor4KKZVI7Av0-aIMAww">
+  <meta name="theme-color" content="#f7f6f2">
+  <link rel="canonical" href="https://amitsinghom.github.io/evidence.html">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="site.webmanifest">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Engineering evidence | Amit Singh">
+  <meta property="og:description" content="Pinned test results, benchmark scope, and limitations for Amit Singh’s public engineering projects.">
+  <meta property="og:url" content="https://amitsinghom.github.io/evidence.html">
+  <meta property="og:image" content="https://amitsinghom.github.io/assets/social-card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Amit Singh. Senior Backend Engineer. Python, AWS and Production Reliability.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Engineering evidence | Amit Singh">
+  <meta name="twitter:description" content="Pinned test results, benchmark scope, and limitations for Amit Singh’s public engineering projects.">
+  <meta name="twitter:image" content="https://amitsinghom.github.io/assets/social-card.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav"><a class="brand" href="index.html" aria-label="Amit Singh, home">Amit Singh<span>.</span></a><nav aria-label="Primary"><a href="index.html#work">Work</a><a href="index.html#leadership">Leadership</a><a href="evidence.html">Evidence</a><a href="resume.html">Résumé</a><a href="mailto:amitdsingh710@gmail.com">Contact</a></nav></header>
+<main id="main">
+<section class="page-intro"><p class="eyebrow">Evidence, with its boundaries</p><h1>What the tests establish.<br>And what they don’t.</h1><p>Dated observations from public CI logs and benchmark documentation, reviewed on 1 October 2026. This is a snapshot, not a claim that every number tracks the latest release.</p><p class="evidence-note">Passing tests support specific claims. They do not establish production capacity, external adoption, or long-term availability. Suites and matrix jobs can overlap, so there is no portfolio-wide test total.</p><nav class="evidence-nav" aria-label="Projects"><a href="#cloudscale">CloudScale Backend</a><a href="#webhook-platform">FastAPI Microservices Platform</a><a href="#cqa-analyzer">Code Quality Analyzer</a><a href="#agentos">AgentOS</a><a href="#wallet-transfer">Wallet Transfer Service</a><a href="#agent-skills">Agent Skills</a></nav></section>
+<article class="evidence-entry" id="cloudscale" data-project="cloudscale">
+<h2>CloudScale Backend</h2>
+<p class="evidence-meta">Public source snapshot: <a href="https://github.com/AmitSinghOM/cloudscale-backend/tree/26a7047de94266d97e9acc520e575b127030f1b2"><code>26a7047de942</code></a></p>
+<p><strong>The decision:</strong> Use transaction-bound idempotency, balanced postings, and a transactional outbox. SQLite and PostgreSQL adapters share contracts, with integration testing against PostgreSQL.</p>
+<ul>
+<li><strong>Python 3.12 primary suite:</strong> <span data-fact="cloudscale-1">518 passed, 5 skipped</span>. <a href="https://github.com/AmitSinghOM/cloudscale-backend/actions/runs/35527516770/job/106122164409">Inspect evidence · run 2026-09-20</a>.</li>
+<li><strong>Backup/restore drill:</strong> <span data-fact="cloudscale-2">27 events across 8 streams; zero event loss in the seeded drill</span>. <a href="https://github.com/AmitSinghOM/cloudscale-backend/actions/runs/35527516770/job/106122164267">Inspect evidence · run 2026-09-20</a>.</li>
+</ul>
+<p>The restore drill dumps and restores the database, rebuilds derived tables, and compares state. Its seeded dataset is deliberately small. A separate suite in the same job is not added to the primary count.</p>
+<p class="boundary-note">Recovery at seeded scale, not a sustained-availability claim.</p>
+</article>
+<article class="evidence-entry" id="webhook-platform" data-project="webhook-platform">
+<h2>FastAPI Microservices Platform</h2>
+<p class="evidence-meta">Public source snapshot: <a href="https://github.com/AmitSinghOM/fastapi-microservices-platform/tree/8789684b1d29cadbd77b692cfe6b3a9ba3f753b2"><code>8789684b1d29</code></a></p>
+<p><strong>The decision:</strong> Keep PostgreSQL as the only durable queue, without Redis or Kafka. Leased jobs use token-checked updates, with Standard Webhooks signatures and isolated delivery egress.</p>
+<ul>
+<li><strong>Local generated-job correctness run:</strong> <span data-fact="webhook-correctness">1,000,000 jobs; zero lost jobs</span>. <a href="https://github.com/AmitSinghOM/fastapi-microservices-platform/blob/8789684b1d29cadbd77b692cfe6b3a9ba3f753b2/docs/benchmarks.md">Inspect evidence</a>.</li>
+<li><strong>Queue age under the million-job backlog:</strong> <span data-fact="webhook-backlog">134.5 s p95 against a 30 s target</span>. <a href="https://github.com/AmitSinghOM/fastapi-microservices-platform/blob/8789684b1d29cadbd77b692cfe6b3a9ba3f753b2/docs/benchmarks.md">Inspect evidence</a>.</li>
+</ul>
+<p>The million-job result exercises generated jobs and the PostgreSQL claim/finalize path on a laptop-class machine. It is not a million real HTTP deliveries or a production capacity result. A separate worker sample with a 5 ms mock receiver is documented in the benchmark. Scripted onboarding timings are not independent human usability evidence.</p>
+<p class="boundary-note">At-least-once delivery; the backlog-latency target was not met.</p>
+</article>
+<article class="evidence-entry" id="cqa-analyzer" data-project="cqa-analyzer">
+<h2>Code Quality Analyzer</h2>
+<p class="evidence-meta">Public source snapshot: <a href="https://github.com/AmitSinghOM/code-quality-analyzer/tree/2dcaeb23dfa143564b54034f6fdb0c7262c25566"><code>2dcaeb23dfa1</code></a></p>
+<p><strong>The decision:</strong> Analyze code offline and integrate into pull requests using SARIF, changed-line gates, and the companion cqa-action. Publish the analyzer as cqa-analyzer, not the unrelated code-quality-analyzer package on PyPI.</p>
+<ul>
+<li><strong>Deep-enabled suite, Python 3.11:</strong> <span data-fact="cqa-analyzer-1">969 passed, 1 skipped</span>. <a href="https://github.com/AmitSinghOM/code-quality-analyzer/actions/runs/35659443845/job/106530922561">Inspect evidence · run 2026-09-21</a>.</li>
+</ul>
+<p>The selected observation is one deep-enabled Python job, not the sum of all OS and Python versions. Rules have documented limitations and fixtures. Passing those fixtures does not establish low false-positive rates on an arbitrary codebase.</p>
+<p class="boundary-note">Bounded static analysis, not proof of arbitrary program correctness.</p>
+</article>
+<article class="evidence-entry" id="agentos" data-project="agentos">
+<h2>AgentOS</h2>
+<p class="evidence-meta">Public source snapshot: <a href="https://github.com/AmitSinghOM/AgentOS/tree/1e3bfb5884c24169e68320fd5c7ae8c5d8375cb0"><code>1e3bfb5884c2</code></a></p>
+<p><strong>The decision:</strong> Record durable workflow state in an event log, require approval for declared effects, and enforce an operator policy ceiling. An operator UI supports inspection and approval.</p>
+<ul>
+<li><strong>Core suite, Python 3.11:</strong> <span data-fact="agentos-1">741 passed, 3 skipped</span>. <a href="https://github.com/AmitSinghOM/AgentOS/actions/runs/36492032477/job/109162919055">Inspect evidence · run 2026-09-28</a>.</li>
+<li><strong>Operator UI suite:</strong> <span data-fact="agentos-2">99 passed</span>. <a href="https://github.com/AmitSinghOM/AgentOS/actions/runs/36492032477/job/109162918668">Inspect evidence · run 2026-09-28</a>.</li>
+</ul>
+<p>Core and UI results are separate scopes. Crash and network-failure CI jobs exercise recovery, but a committed workflow step and an external side effect are different boundaries. HMAC seals are tamper-evident under key protection, not tamper-proof. Only the public repository is referenced here.</p>
+<p class="boundary-note">External side effects depend on downstream idempotency or reconciliation.</p>
+</article>
+<article class="evidence-entry" id="wallet-transfer" data-project="wallet-transfer">
+<h2>Wallet Transfer Service</h2>
+<p class="evidence-meta">Public source snapshot: <a href="https://github.com/AmitSinghOM/wallet-transfer-service/tree/360c87c9731bd07e8fdd0a1af38afcb0d4d9b558"><code>360c87c9731b</code></a></p>
+<p><strong>The decision:</strong> Use transaction-bound idempotency keys and deterministic wallet lock ordering for a focused transfer service.</p>
+<ul>
+<li><strong>Suite against PostgreSQL 16, Python 3.12:</strong> <span data-fact="wallet-transfer-1">36 passed</span>. <a href="https://github.com/AmitSinghOM/wallet-transfer-service/actions/runs/37610929342/job/112757726818">Inspect evidence · run 2026-10-07</a>.</li>
+</ul>
+<p>The suite runs against a real PostgreSQL service, including concurrent first-transfer and idempotent-retry scenarios. It establishes the invariants under test, not throughput or production use.</p>
+<p class="boundary-note">Transaction-design case study, not a production payments system.</p>
+</article>
+<article class="evidence-entry" id="agent-skills" data-project="agent-skills">
+<h2>Agent Skills</h2>
+<p class="evidence-meta">Public source snapshot: <a href="https://github.com/AmitSinghOM/agent-skills/tree/0da9f0af0855c3e84200fc4f9c1cd5d4a8eaf889"><code>0da9f0af0855</code></a></p>
+<p><strong>The decision:</strong> Package four tool-backed coding-agent workflows, including architecture snapshots and changed-line quality gates.</p>
+<ul>
+<li><strong>Validator and unit tests, Python 3.12:</strong> <span data-fact="agent-skills-1">Ran 41 tests, OK</span>. <a href="https://github.com/AmitSinghOM/agent-skills/actions/runs/34749014647/job/103702023796">Inspect evidence · run 2026-09-13</a>.</li>
+</ul>
+<p>This entry describes the pinned public snapshot, not unpublished local changes. The selected job is one Python version of a four-version matrix. Script and contract tests establish tool behaviour; model-level validation needs a separate, scored evaluation. No marketplace adoption is claimed.</p>
+<p class="boundary-note">Script tests do not establish model-behaviour quality.</p>
+</article>
+</main>
+<footer id="contact"><div><p class="eyebrow">Get in touch</p><h2>Let’s talk backend.</h2><p>Interested in senior backend roles focused on Python/AWS systems and production reliability.</p><a class="contact-link" href="mailto:amitdsingh710@gmail.com">amitdsingh710@gmail.com</a></div><nav aria-label="Social links"><a href="https://github.com/AmitSinghOM">GitHub</a><a href="https://linkedin.com/in/amit-singh-491100192">LinkedIn</a><a href="assets/Amit_Singh_Backend_Resume.pdf" download>Download résumé PDF</a></nav><small>© 2026 Amit Singh · No trackers or external runtime dependencies</small></footer>
+</body>
+</html>
