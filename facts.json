@@ -1,81 +1,156 @@
 {
-  "$comment": "Single source of truth for every number the portfolio quotes. Re-measure before editing: `pytest --collect-only -q` in each repo at the commit named here. scripts/check_facts.py fails CI when index.html, resume.html or a GitHub repo description disagrees with this file.",
-  "measured_on": "2026-09-22",
-  "projects": {
-    "webhook-platform": {
-      "repo": "AmitSinghOM/fastapi-microservices-platform",
-      "version": "v4.0.0",
-      "commit": "8789684",
-      "tests": 220,
-      "tests_note": "188 app/tests + 32 sdk/python/tests, both collected with pytest --collect-only",
-      "must_mention": [
-        "PostgreSQL",
-        "Standard Webhooks"
-      ]
-    },
-    "agentos": {
-      "repo": "AmitSinghOM/AgentOS",
-      "version": "v0.16.0",
-      "version_tag": "v0.16.0",
-      "commit": "d239104",
-      "tests": 558,
-      "tests_note": "pytest --collect-only -q at d239104 (v0.16.0 tag) with the four provider distributions installed: tests/ 487 + providers 71 = 558 collected incl. chaos; plus 99 UI tests (vitest) not counted here",
-      "must_mention": [
-        "event log",
-        "SIGKILL"
-      ],
-      "must_not_mention": [
-        "never double-executes",
-        "exactly-once effects"
-      ]
-    },
-    "cqa-analyzer": {
-      "repo": "AmitSinghOM/code-quality-analyzer",
-      "version": "v3.3.0",
-      "commit": "26be993",
-      "tests": 857,
-      "tests_note": "pytest --collect-only at 26be993 (v3.3.0 merge commit), fresh --depth 1 clone + venv from .[dev]: 857 collected",
-      "must_mention": [
-        "95 rules",
-        "eight languages",
-        "security"
-      ]
-    },
-    "cloudscale": {
-      "repo": "AmitSinghOM/cloudscale-backend",
-      "version": "v0.9.0",
-      "commit": "2579d27",
-      "tests": 498,
-      "tests_note": "pytest --collect-only at 2579d27 from requirements-dev.lock: 498 collected. 1,394 rps is the v0.5.0 release gate run with every control active (evidence/4bf63dd, ROADMAP); README's Phase-4 figure is a different run",
-      "must_mention": [
-        "1,394 rps",
-        "SQLite"
-      ]
-    },
-    "wallet-transfer": {
-      "repo": "AmitSinghOM/wallet-transfer-service",
-      "pages": ["index.html"],
-      "commit": "ff517f2",
-      "tests": 36,
-      "must_mention": [
-        "ON CONFLICT"
-      ]
-    },
-    "agent-skills": {
-      "repo": "AmitSinghOM/agent-skills",
-      "pages": ["index.html"],
-      "commit": "0da9f0a",
-      "tests": 41,
-      "must_mention": [
-        "Four"
-      ]
-    }
-  },
+  "schema_version": 2,
+  "reviewed_on": "2026-10-01",
+  "measurement_policy": "Dated observations from pinned public CI logs or benchmark documentation. Suites and matrix jobs can overlap: do not sum them. Remote checks validate public source commits and CI job identity/conclusion, not numeric log contents. No claim of external adoption or production certification.",
   "site": {
     "files": [
       "index.html",
-      "resume.html"
+      "resume.html",
+      "evidence.html"
     ],
-    "tests_total_fact": "tests-total"
+    "forbidden_phrases": [
+      "never double-executes",
+      "exactly-once effects",
+      "multi-seat review",
+      "four-seat review",
+      "deadlock-free",
+      "tests-total"
+    ]
+  },
+  "projects": {
+    "cloudscale": {
+      "title": "CloudScale Backend",
+      "repo": "AmitSinghOM/cloudscale-backend",
+      "commit": "26a7047de94266d97e9acc520e575b127030f1b2",
+      "pages": [
+        "index.html",
+        "resume.html",
+        "evidence.html"
+      ],
+      "boundary": "Recovery at seeded scale, not a sustained-availability claim.",
+      "observations": [
+        {
+          "id": "cloudscale-1",
+          "label": "Python 3.12 primary suite",
+          "value": "518 passed, 5 skipped",
+          "source_url": "https://github.com/AmitSinghOM/cloudscale-backend/actions/runs/35527516770/job/106122164409",
+          "run_id": 35527516770,
+          "job_id": 106122164409,
+          "job_name": "gate \u00b7 py3.12 (format \u00b7 lint \u00b7 types \u00b7 tests, SQLite + PostgreSQL)",
+          "run_date": "2026-09-20"
+        },
+        {
+          "id": "cloudscale-2",
+          "label": "Backup/restore drill",
+          "value": "27 events across 8 streams; zero event loss in the seeded drill",
+          "source_url": "https://github.com/AmitSinghOM/cloudscale-backend/actions/runs/35527516770/job/106122164267",
+          "run_id": 35527516770,
+          "job_id": 106122164267,
+          "job_name": "restore drill (dump \u00b7 restore \u00b7 verify revision \u00b7 rebuild derived tables \u00b7 compare)",
+          "run_date": "2026-09-20"
+        }
+      ]
+    },
+    "webhook-platform": {
+      "title": "FastAPI Microservices Platform",
+      "repo": "AmitSinghOM/fastapi-microservices-platform",
+      "commit": "8789684b1d29cadbd77b692cfe6b3a9ba3f753b2",
+      "pages": [
+        "index.html",
+        "resume.html",
+        "evidence.html"
+      ],
+      "boundary": "At-least-once delivery; the backlog-latency target was not met.",
+      "observations": [
+        {
+          "id": "webhook-correctness",
+          "label": "Local generated-job correctness run",
+          "value": "1,000,000 jobs; zero lost jobs",
+          "source_url": "https://github.com/AmitSinghOM/fastapi-microservices-platform/blob/8789684b1d29cadbd77b692cfe6b3a9ba3f753b2/docs/benchmarks.md"
+        },
+        {
+          "id": "webhook-backlog",
+          "label": "Queue age under the million-job backlog",
+          "value": "134.5 s p95 against a 30 s target",
+          "source_url": "https://github.com/AmitSinghOM/fastapi-microservices-platform/blob/8789684b1d29cadbd77b692cfe6b3a9ba3f753b2/docs/benchmarks.md"
+        }
+      ]
+    },
+    "cqa-analyzer": {
+      "title": "Code Quality Analyzer",
+      "repo": "AmitSinghOM/code-quality-analyzer",
+      "commit": "2dcaeb23dfa143564b54034f6fdb0c7262c25566",
+      "pages": [
+        "index.html",
+        "evidence.html"
+      ],
+      "boundary": "Bounded static analysis, not proof of arbitrary program correctness.",
+      "observations": [
+        {
+          "id": "cqa-analyzer-1",
+          "label": "Deep-enabled suite, Python 3.11",
+          "value": "969 passed, 1 skipped",
+          "source_url": "https://github.com/AmitSinghOM/code-quality-analyzer/actions/runs/35659443845/job/106530922561",
+          "run_id": 35659443845,
+          "job_id": 106530922561,
+          "job_name": "deep-test (3.11)",
+          "run_date": "2026-09-21"
+        }
+      ]
+    },
+    "agentos": {
+      "title": "AgentOS",
+      "repo": "AmitSinghOM/AgentOS",
+      "commit": "1e3bfb5884c24169e68320fd5c7ae8c5d8375cb0",
+      "pages": [
+        "index.html",
+        "evidence.html"
+      ],
+      "boundary": "External side effects depend on downstream idempotency or reconciliation.",
+      "observations": [
+        {
+          "id": "agentos-1",
+          "label": "Core suite, Python 3.11",
+          "value": "741 passed, 3 skipped",
+          "source_url": "https://github.com/AmitSinghOM/AgentOS/actions/runs/36492032477/job/109162919055",
+          "run_id": 36492032477,
+          "job_id": 109162919055,
+          "job_name": "test (3.11)",
+          "run_date": "2026-09-28"
+        },
+        {
+          "id": "agentos-2",
+          "label": "Operator UI suite",
+          "value": "99 passed",
+          "source_url": "https://github.com/AmitSinghOM/AgentOS/actions/runs/36492032477/job/109162918668",
+          "run_id": 36492032477,
+          "job_id": 109162918668,
+          "job_name": "ui",
+          "run_date": "2026-09-28"
+        }
+      ]
+    },
+    "wallet-transfer": {
+      "title": "Wallet Transfer Service",
+      "repo": "AmitSinghOM/wallet-transfer-service",
+      "commit": "ff517f25d81cf4f044d6cdd071314028f6c8e283",
+      "pages": [
+        "index.html",
+        "evidence.html"
+      ],
+      "boundary": "Transaction-design case study, not a production payments system.",
+      "observations": []
+    },
+    "agent-skills": {
+      "title": "Agent Skills",
+      "repo": "AmitSinghOM/agent-skills",
+      "commit": "0da9f0af0855c3e84200fc4f9c1cd5d4a8eaf889",
+      "pages": [
+        "index.html",
+        "evidence.html"
+      ],
+      "boundary": "Script tests do not establish model-behaviour quality.",
+      "observations": []
+    }
   }
 }

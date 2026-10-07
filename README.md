@@ -1,44 +1,44 @@
-# Amit Singh — Engineering Portfolio
+# Amit Singh | Engineering Portfolio
 
-A fast, dependency-free portfolio focused on senior backend, distributed-systems, AWS platform, and applied-AI engineering.
+A dependency-free portfolio focused on senior backend engineering: Python, AWS and production reliability. React and applied AI remain supporting capabilities.
 
-**Live at:** <https://amitsinghom.github.io/> — deployed by GitHub Pages from the `main` branch of `AmitSinghOM/AmitSinghOM.github.io`.
+Public site: <https://amitsinghom.github.io/>. This working copy is a **local preview**; changes are not published until separately approved and merged.
 
-Every number on the site comes from one file, [`facts.json`](./facts.json), measured against the public repository it cites (`pytest --collect-only` at the commit named there). `scripts/check_facts.py` fails CI when `index.html`, `resume.html`, or a GitHub repository description disagrees with that file, so a stale count cannot survive a merge:
+## Preview and check
 
 ```bash
-python3 scripts/check_facts.py            # site vs facts.json
-python3 scripts/check_facts.py --remote   # plus GitHub descriptions and tags
+python3 -m http.server 8000 --bind 127.0.0.1
+python3 scripts/check_facts.py
+python3 -m unittest discover -s scripts -p 'test_*.py'
+python3 scripts/check_facts.py --remote
 ```
 
-To change a number: re-measure, edit `facts.json`, then the site, then the repository description. See [ROADMAP.md](./ROADMAP.md) for what has shipped and what is next.
+Open <http://localhost:8000>. `--remote` uses public GitHub APIs; `GITHUB_TOKEN` is optional for a higher rate limit.
 
 ## Site structure
 
-- `index.html` — responsive portfolio and structured profile data
-- `facts.json` and `scripts/check_facts.py` — source of truth for every quoted number, and the CI check that enforces it
-- `styles.css` — visual system, responsive behavior, and accessibility states
-- `resume.html` — print-ready résumé (`noindex` to prevent search competition)
-- `robots.txt` and `sitemap.xml` — crawler discovery
-- `site.webmanifest` and `favicon.svg` — browser metadata
-- `assets/social-card.png` — LinkedIn and social-sharing preview
+- `index.html`: production ownership, three featured public projects, supporting work and contact.
+- `resume.html`: readable, print-ready résumé, with actual employment titles and employer/client attribution.
+- `assets/Amit_Singh_Backend_Resume.pdf`: generated two-page résumé; regenerate after editing the HTML.
+- `evidence.html`: dated observations, benchmark scope and explicit project limitations.
+- `facts.json`: pinned public commits, scoped CI observations and evidence boundaries.
+- `scripts/check_facts.py`: checks observation text, project scope, pinned links, boundary text, HTML nesting and local links/fragments.
+- `scripts/test_check_facts.py`: negative tests for drift and broken links.
+- `styles.css`: responsive layout, keyboard focus and reduced-motion support.
+- `assets/social-card.svg`: editable social-card source; `social-card.png` is its 1200 × 630 render.
 
-## Preview locally
+## Evidence policy
 
-No installation or build step is required:
+Do not aggregate test counts across overlapping suites or matrix jobs. Keep volatile numbers off the homepage and résumé; place public test observations on the evidence page with a pinned commit, job URL, suite scope and run date. Benchmark results are bounded observations, not production capacity or availability claims.
 
-```bash
-python3 -m http.server 8000
-```
+Remote checks validate that public commits exist and cited CI jobs belong to those commits and succeeded. They **do not parse numeric results from logs** or force current repository descriptions to match a historical snapshot. Read the source logs when updating observations. Employment achievements are owner-provided résumé history, not public-project CI evidence. Do not publish client source or private operational artifacts to substantiate them.
 
-Then open <http://localhost:8000>.
+## PDF and social image
 
-## SEO setup
+The PDF is printed from `resume.html` using Chromium, A4, CSS page size, background graphics enabled, with browser headers/footers disabled. Check both pages and extracted text after regeneration. The PNG is rendered from `assets/social-card.svg` at 1200 × 630.
 
-The site includes canonical metadata, Open Graph/Twitter cards, `ProfilePage` and `Person` JSON-LD, index directives, a sitemap, semantic HTML, and descriptive content. Google Search Console ownership is verified via the meta tag in `index.html`; `sitemap.xml` is referenced from `robots.txt`. Update `lastmod` in the sitemap whenever indexed content changes.
+## Publication
 
-## Deploy
+Review the local preview before approving a commit or push. The existing live branch has changes absent from this local starting point: compare and reconcile it before publishing rather than force-pushing or replacing remote history. CI changes here run only after publication.
 
-Changes land on `main` through pull requests gated by the `facts` workflow; GitHub Pages redeploys the repository root automatically. No build step is required.
-
-The site uses no JavaScript, third-party fonts, analytics, trackers, or runtime dependencies.
+The site has no client-side JavaScript execution, external fonts, analytics or runtime dependencies. The JSON-LD block is metadata. Canonical URLs and résumé PDF links intentionally use the eventual public site domain.
