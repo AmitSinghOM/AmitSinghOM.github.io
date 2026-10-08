@@ -82,6 +82,7 @@
       "commit": "2dcaeb23dfa143564b54034f6fdb0c7262c25566",
       "pages": [
         "index.html",
+        "resume.html",
         "evidence.html"
       ],
       "boundary": "Bounded static analysis, not proof of arbitrary program correctness.",
@@ -104,6 +105,7 @@
       "commit": "1e3bfb5884c24169e68320fd5c7ae8c5d8375cb0",
       "pages": [
         "index.html",
+        "resume.html",
         "evidence.html"
       ],
       "boundary": "External side effects depend on downstream idempotency or reconciliation.",
