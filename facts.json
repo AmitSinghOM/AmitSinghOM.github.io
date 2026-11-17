@@ -102,7 +102,7 @@
     "agentos": {
       "title": "AgentOS",
       "repo": "AmitSinghOM/AgentOS",
-      "commit": "1e3bfb5884c24169e68320fd5c7ae8c5d8375cb0",
+      "commit": "34b4a06de0f202738ec92433da8cc3d8ad6a8162",
       "pages": [
         "index.html",
         "resume.html",
@@ -113,22 +113,22 @@
         {
           "id": "agentos-1",
           "label": "Core suite, Python 3.11",
-          "value": "741 passed, 3 skipped",
-          "source_url": "https://github.com/AmitSinghOM/AgentOS/actions/runs/36492032477/job/109162919055",
-          "run_id": 36492032477,
-          "job_id": 109162919055,
+          "value": "944 passed, 3 skipped",
+          "source_url": "https://github.com/AmitSinghOM/AgentOS/actions/runs/44156991925/job/134300267305",
+          "run_id": 44156991925,
+          "job_id": 134300267305,
           "job_name": "test (3.11)",
-          "run_date": "2026-09-28"
+          "run_date": "2026-11-17"
         },
         {
           "id": "agentos-2",
           "label": "Operator UI suite",
-          "value": "99 passed",
-          "source_url": "https://github.com/AmitSinghOM/AgentOS/actions/runs/36492032477/job/109162918668",
-          "run_id": 36492032477,
-          "job_id": 109162918668,
+          "value": "105 passed",
+          "source_url": "https://github.com/AmitSinghOM/AgentOS/actions/runs/44156991925/job/134300267308",
+          "run_id": 44156991925,
+          "job_id": 134300267308,
           "job_name": "ui",
-          "run_date": "2026-09-28"
+          "run_date": "2026-11-17"
         }
       ]
     },

@@ -65,13 +65,13 @@
 </article>
 <article class="evidence-entry" id="agentos" data-project="agentos">
 <h2>AgentOS</h2>
-<p class="evidence-meta">Public source snapshot: <a href="https://github.com/AmitSinghOM/AgentOS/tree/1e3bfb5884c24169e68320fd5c7ae8c5d8375cb0"><code>1e3bfb5884c2</code></a></p>
+<p class="evidence-meta">Public source snapshot: <a href="https://github.com/AmitSinghOM/AgentOS/tree/34b4a06de0f202738ec92433da8cc3d8ad6a8162"><code>34b4a06de0f2</code></a></p>
 <p><strong>The decision:</strong> Record durable workflow state in an event log, require approval for declared effects, and enforce an operator policy ceiling. An operator UI supports inspection and approval.</p>
 <ul>
-<li><strong>Core suite, Python 3.11:</strong> <span data-fact="agentos-1">741 passed, 3 skipped</span>. <a href="https://github.com/AmitSinghOM/AgentOS/actions/runs/36492032477/job/109162919055">Inspect evidence · run 2026-09-28</a>.</li>
-<li><strong>Operator UI suite:</strong> <span data-fact="agentos-2">99 passed</span>. <a href="https://github.com/AmitSinghOM/AgentOS/actions/runs/36492032477/job/109162918668">Inspect evidence · run 2026-09-28</a>.</li>
+<li><strong>Core suite, Python 3.11:</strong> <span data-fact="agentos-1">944 passed, 3 skipped</span>. <a href="https://github.com/AmitSinghOM/AgentOS/actions/runs/44156991925/job/134300267305">Inspect evidence · run 2026-11-17</a>.</li>
+<li><strong>Operator UI suite:</strong> <span data-fact="agentos-2">105 passed</span>. <a href="https://github.com/AmitSinghOM/AgentOS/actions/runs/44156991925/job/134300267308">Inspect evidence · run 2026-11-17</a>.</li>
 </ul>
-<p>Core and UI results are separate scopes. Crash and network-failure CI jobs exercise recovery, but a committed workflow step and an external side effect are different boundaries. HMAC seals are tamper-evident under key protection, not tamper-proof. Only the public repository is referenced here.</p>
+<p>Core and UI results are separate scopes. The core count includes property-based tests over the event log; crash and network-failure CI jobs (Toxiproxy partitions and latency) exercise recovery, but a committed workflow step and an external side effect are different boundaries. HMAC seals are tamper-evident under key protection, not tamper-proof. Only the public repository is referenced here.</p>
 <p class="boundary-note">External side effects depend on downstream idempotency or reconciliation.</p>
 </article>
 <article class="evidence-entry" id="wallet-transfer" data-project="wallet-transfer">
