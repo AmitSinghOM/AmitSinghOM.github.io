@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "reviewed_on": "2026-10-07",
+  "reviewed_on": "2026-11-18",
   "measurement_policy": "Dated observations from pinned public CI logs or benchmark documentation. Suites and matrix jobs can overlap: do not sum them. Remote checks validate public source commits and CI job identity/conclusion, not numeric log contents. No claim of external adoption or production certification.",
   "site": {
     "files": [
@@ -153,6 +153,16 @@
           "run_date": "2026-10-07"
         }
       ]
+    },
+    "replay-safe-orders": {
+      "title": "Replay-Safe Order Processing",
+      "repo": "AmitSinghOM/replay-safe-order-processing",
+      "commit": "85ffeb5116ddd36231b507586de69f4e1b2c6445",
+      "pages": [
+        "index.html"
+      ],
+      "boundary": "Local failure tests only; the AWS load run is not complete.",
+      "observations": []
     },
     "agent-skills": {
       "title": "Agent Skills",
