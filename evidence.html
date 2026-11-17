@@ -55,10 +55,10 @@
 </article>
 <article class="evidence-entry" id="cqa-analyzer" data-project="cqa-analyzer">
 <h2>Code Quality Analyzer</h2>
-<p class="evidence-meta">Public source snapshot: <a href="https://github.com/AmitSinghOM/code-quality-analyzer/tree/2dcaeb23dfa143564b54034f6fdb0c7262c25566"><code>2dcaeb23dfa1</code></a></p>
-<p><strong>The decision:</strong> Analyze code offline and integrate into pull requests using SARIF, changed-line gates, and the companion cqa-action. Publish the analyzer as cqa-analyzer, not the unrelated code-quality-analyzer package on PyPI.</p>
+<p class="evidence-meta">Public source snapshot: <a href="https://github.com/AmitSinghOM/code-quality-analyzer/tree/4a073b2c6f10f5fa66a0eb9f1efa92d404d24223"><code>4a073b2c6f10</code></a></p>
+<p><strong>The decision:</strong> Analyze code offline and integrate into pull requests using SARIF, changed-line gates, and the companion cqa-action. Since 3.5.0, rule explanations are available from the CLI and from release-pinned SARIF help links. Publish the analyzer as cqa-analyzer, not the unrelated code-quality-analyzer package on PyPI.</p>
 <ul>
-<li><strong>Deep-enabled suite, Python 3.11:</strong> <span data-fact="cqa-analyzer-1">969 passed, 1 skipped</span>. <a href="https://github.com/AmitSinghOM/code-quality-analyzer/actions/runs/35659443845/job/106530922561">Inspect evidence · run 2026-09-21</a>.</li>
+<li><strong>Deep-enabled suite, Python 3.11:</strong> <span data-fact="cqa-analyzer-1">1,228 passed, 1 skipped</span>. <a href="https://github.com/AmitSinghOM/code-quality-analyzer/actions/runs/44140864346/job/134242954812">Inspect evidence · run 2026-11-17</a>.</li>
 </ul>
 <p>The selected observation is one deep-enabled Python job, not the sum of all OS and Python versions. Rules have documented limitations and fixtures. Passing those fixtures does not establish low false-positive rates on an arbitrary codebase.</p>
 <p class="boundary-note">Bounded static analysis, not proof of arbitrary program correctness.</p>
